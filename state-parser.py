@@ -1,6 +1,8 @@
 #!/usr/bin/python -tt
 # -*- coding: latin-1 -*-
 
+#VERY IMPORTANT!!!! This program works properly ONLY IF the plain text given ENDS WITH AN EMPTY LINE!!!!!!!! 
+
 import sys
 import re
 
@@ -36,16 +38,21 @@ def markup(filename):
         if line.startswith(' -'):
            unordered.append(line)
            status = 'ULIST'
-        elif line != '\n':
+        elif line!= '\n':
+           paragraph = [line]
+#           paragraph.append(line)
            html += '<ul>\n%s</ul>\n' % ''.join('<li>%s</li>\n' % line[2:-1] for line in unordered)
-           status = 'READING'
+           status = 'FIRST_LINE'
  
     elif status == 'OLIST':
         if match:
            ordered.append(line)
            status = 'OLIST'
         elif line != '\n':
+           paragraph = [line]
+#           paragraph.append(line)
            html += '<ol>\n%s</ol>\n' % ''.join('<li>%s</li>\n' % line[3:-1] for line in ordered)
+           status = 'FIRST_LINE'
 
     elif status == 'FIRST_LINE':
         if line == '\n':
@@ -57,10 +64,11 @@ def markup(filename):
     
     elif status == 'PARAGRAPH':
         if line == '\n':
-           status = 'READING'
-        elif not line.startswith(' -'):
            html += '<p>%s</p>\n' % ''.join('%s\n' % line[:-1] for line in paragraph)
            status = 'READING'
+        elif not line.startswith(' -'):
+           paragraph.append(line)
+           status = 'PARAGRAPH'
            
    html = re.sub(r'(\d+-\d+)', r'<em>\1</em>', html)
    html = re.sub(r'([\w\-\._]+@[\w\-\._]+)', r'<u>\1</u>', html)
