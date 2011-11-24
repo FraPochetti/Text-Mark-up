@@ -61,25 +61,25 @@ class GuiMarkup(wx.Frame):
 
             vbox1 = wx.BoxSizer(wx.VERTICAL)
             
-            hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-            st1 = wx.StaticText(panel, label='Input/Loaded text')
-            st1.SetFont(font)
-            hbox1.Add(st1, flag=wx.LEFT, border=8)
-            st2 = wx.StaticText(panel, label='Converted text')
-            st2.SetFont(font)
-            hbox1.Add(st2, flag=wx.RIGHT, border=8)
-            vbox1.Add(hbox1, flag=wx.EXPAND, border=10)
+           # hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+           # st1 = wx.StaticText(panel, label='Input/Loaded text')
+           # st1.SetFont(font)
+           # hbox1.Add(st1, flag=wx.RIGHT|wx.RIGHT|wx.EXPAND, border=30)
+           # st2 = wx.StaticText(panel, label='Converted text')
+           # st2.SetFont(font)
+           # hbox1.Add(st2, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=30)
+           # vbox1.Add(hbox1, flag=wx.EXPAND, border=10)
 
            # vbox1.Add((-1, 10))
 
             hbox2 = wx.BoxSizer(wx.HORIZONTAL)
             tc2 = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
-            hbox2.Add(tc2, proportion=1, flag=wx.EXPAND, border=10)
-            btn1 = wx.Button(panel, label='Convert into', size=(70, 30))
-            hbox2.Add(btn1, proportion=1, flag=wx.EXPAND, border=5)
+            hbox2.Add(tc2, proportion=1, flag=wx.RIGHT|wx.EXPAND, border=10)
+            btn1 = wx.Button(panel, label='Convert into -->', size=(30, 30))
+            hbox2.Add(btn1, proportion=1, flag=wx.RIGHT|wx.LEFT|wx.ALIGN_CENTER, border=5)
             tc3 = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
-            hbox2.Add(tc3, proportion=1, flag=wx.EXPAND, border=10)
-            vbox1.Add(hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM|wx.TOP|wx.EXPAND, border = 10)
+            hbox2.Add(tc3, proportion=1, flag=wx.LEFT|wx.EXPAND, border=10)
+            vbox1.Add(hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.TOP|wx.BOTTOM|wx.EXPAND, border = 10)
            
            # vbox1.Add((-1, 10)) 
             
