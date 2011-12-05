@@ -8,9 +8,10 @@ import re
 
 class MarkUp: 
 
-   def __init__(self,filename):
-     self.filename = filename
-     self.text = open(filename, 'rU').readlines()
+   def __init__(self,text):
+    # self.filename = filename
+    # self.text = open(filename, 'rU').readlines()
+     self.text = text
      self.html = '' 
 
    def markparser(self):
